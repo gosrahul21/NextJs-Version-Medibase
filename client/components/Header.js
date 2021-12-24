@@ -16,16 +16,16 @@ export default function Header() {
     })
 
     return (
-        <div className={`fixed w-full z-50 top-0 grid grid-cols-3
-         px-4 py-2 ${bgShow ?"bg-white shadow-md ":"bg-transparent"} transition duration-150  ease-in-out	`}>
+        <div className={`fixed w-full z-50 top-0 grid grid-cols-3 text-indigo-400
+         px-8 py-2 ${bgShow ?"bg-slate-700 shadow-md ":"bg-transparent"} transition duration-150  ease-in-out	`}>
             <div className="flex items-center">
                 {/* Display Name of website */}
-                <h1 className="text-lg">Medibase</h1>
+                <h1 className="text-lg  font-semibold">Medibase</h1>
             </div>
 
             <div className="flex justify-center items-center">
                 {/* display search box to search for patient */}
-                <input placeholder="Search" type="text" className="text-center px-2 py-1 rounded-full border-2 border-gray-200 outline-gray-400"/>
+                <input placeholder="Search" type="text" className="text-center px-2 py-1 rounded-full bg-transparent border border-gray-200 outline-gray-400"/>
             </div>
 
             <div className="flex justify-end items-center space-x-4">

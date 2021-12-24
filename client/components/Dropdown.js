@@ -15,7 +15,7 @@ function Dropdown({displayName}) {
 
     return (
         <div className="relative ">
-            <div className='cursor-pointer' onClick={(e)=>{e.stopPropagation(); setShow(!show)}}>
+            <div className='cursor-pointer text-base' onClick={(e)=>{e.stopPropagation(); setShow(!show)}}>
                 {displayName}
             </div>
 
