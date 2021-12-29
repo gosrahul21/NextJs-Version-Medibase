@@ -2,19 +2,24 @@ import Dropdown from "./Dropdown";
 import {useState,useEffect} from 'react';
 import { MenuIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
-export default function Header() {
+import LoginModal from './LoginModal'
+export default function Header({user}) {
 
     const router = useRouter();
     const [bgShow,setBgShow] = useState(false);
+    
+    function scrollEventHandler(e){
+        if(scrollY>0){
+            setBgShow(true);
+        }
+        else
+            setBgShow(false);
+    }
 
     useEffect(()=>{
-        addEventListener('scroll',(e)=>{
-            if(scrollY>0){
-                setBgShow(true);
-            }
-            else
-                setBgShow(false);
-        })
+        addEventListener('scroll',scrollEventHandler);
+
+        return ()=>removeEventListener("scroll",scrollEventHandler);
     })
 
     return (
@@ -32,7 +37,7 @@ export default function Header() {
 
             <div className="flex justify-end items-center space-x-4">
                 <p className="hidden md:inline cursor-pointer rounded-full px-4 py-1 hover:bg-gray-50 whitespace-nowrap">Register as Doctor</p>
-                <Dropdown />
+                <Dropdown user={user} />
             </div>
             
         </div>

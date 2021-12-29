@@ -1,9 +1,33 @@
+import {useEffect,useState} from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {Header,Footer} from '../components';
+import {firebaseApp} from '../firebase'
+import { getAuth, GoogleAuthProvider, signInWithPopup,signInWithPhoneNumber,FacebookAuthProvider } from "firebase/auth";
 
-export default function Home() {
+
+
+function Home() {
+  
+  const auth = getAuth(firebaseApp);
+  const [user,setUser] = useState(null);
+
+  useEffect(()=>{
+    const removeOnStateChangeListener = auth.onAuthStateChanged(()=>{
+      const currUser = auth.currentUser;
+      if(!currUser)
+        return setUser(null);
+
+        setUser({name:currUser?.displayName,email:currUser?.email});
+    })
+
+    return ()=>{
+      removeOnStateChangeListener();
+    }
+
+  },[]); 
+
   return (
     <div  className='bg-gradient-to-tr from-slate-900 to-slate-800' >
       <Head>
@@ -13,14 +37,14 @@ export default function Home() {
       </Head>
       
       <main >
-      <Header/>
-        <div className='relative flex justify-between pt-8 mx-8  rounded-lg items-center '>
+      <Header user = {user}/>
+        <div className='flex  space-x-8 pt-8 mx-8  rounded-lg items-center '>
           <img className='object-contain'  onContextMenu={(e)=>e.preventDefault()} onDragStart={(e)=>e.preventDefault()}  src = "https://img.smartspends.com/static/images/etmoneyweb/insurance/health-banner.png"/>
           <h1 className=' top-1/3 right-[50px] text-indigo-100 text-3xl font-semibold w-[400px]'>Now keep your medical prescription safe, secure and easily accessible</h1>
           {/* <button>Click here</button> */}
         </div>
 
-      <div className='flex justify-between m-8 mx-[5%] rounded-xl shadow-md bg-gradient-to-tr from-indigo-800 to-slate-800'>
+      <div className='flex justify-between  m-8 mx-[5%] rounded-xl shadow-md bg-gradient-to-tr from-indigo-800 to-slate-800'>
 
         <div className='flex flex-col items-center flex-1 justify-center'>
             <h1 className='font-semibold text-3xl p-4 text-indigo-100'>Get prescribed online</h1>
@@ -74,3 +98,7 @@ export default function Home() {
     </div>
   )
 }
+
+
+
+export default Home;

@@ -1,11 +1,9 @@
 import React from 'react'
 
-function signin() {
+export default function showprofile() {
     return (
         <div>
-            signin page
+            profile
         </div>
     )
 }
-
-export default signin
