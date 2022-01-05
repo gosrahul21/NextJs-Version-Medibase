@@ -3,30 +3,30 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {Header,Footer} from '../components';
-import {firebaseApp} from '../firebase'
-import { getAuth, GoogleAuthProvider, signInWithPopup,signInWithPhoneNumber,FacebookAuthProvider } from "firebase/auth";
+// import {firebaseApp} from '../firebase'
+// import { getAuth, GoogleAuthProvider, signInWithPopup,signInWithPhoneNumber,FacebookAuthProvider } from "firebase/auth";
 
 
 
-function Home() {
+function Home({user}) {
   
-  const auth = getAuth(firebaseApp);
-  const [user,setUser] = useState(null);
+  // const auth = getAuth(firebaseApp);
+  // const [user,setUser] = useState(null);
 
-  useEffect(()=>{
-    const removeOnStateChangeListener = auth.onAuthStateChanged(()=>{
-      const currUser = auth.currentUser;
-      if(!currUser)
-        return setUser(null);
+  // useEffect(()=>{
+  //   const removeOnStateChangeListener = auth.onAuthStateChanged(()=>{
+  //     const currUser = auth.currentUser;
+  //     if(!currUser)
+  //       return setUser(null);
+        
+  //       setUser({name:currUser?.displayName,email:currUser?.email});
+  //   })
 
-        setUser({name:currUser?.displayName,email:currUser?.email});
-    })
+  //   return ()=>{
+  //     removeOnStateChangeListener();
+  //   }
 
-    return ()=>{
-      removeOnStateChangeListener();
-    }
-
-  },[]); 
+  // },[]); 
 
   return (
     <div  className='bg-gradient-to-tr from-slate-900 to-slate-800' >
@@ -37,7 +37,7 @@ function Home() {
       </Head>
       
       <main >
-      <Header user = {user}/>
+      <Header user = {user} bgshow={false} />
         <div className='flex  space-x-8 pt-8 mx-8  rounded-lg items-center '>
           <img className='object-contain'  onContextMenu={(e)=>e.preventDefault()} onDragStart={(e)=>e.preventDefault()}  src = "https://img.smartspends.com/static/images/etmoneyweb/insurance/health-banner.png"/>
           <h1 className=' top-1/3 right-[50px] text-indigo-100 text-3xl font-semibold w-[400px]'>Now keep your medical prescription safe, secure and easily accessible</h1>

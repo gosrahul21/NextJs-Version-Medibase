@@ -1,12 +1,12 @@
 import Dropdown from "./Dropdown";
 import {useState,useEffect} from 'react';
-import { MenuIcon } from "@heroicons/react/solid";
+import { MenuIcon,SearchIcon,SunIcon,BellIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import LoginModal from './LoginModal'
-export default function Header({user}) {
+export default function Header({user,bgshow}) {
 
     const router = useRouter();
-    const [bgShow,setBgShow] = useState(false);
+    const [bgShow,setBgShow] = useState(bgshow);
     
     function scrollEventHandler(e){
         if(scrollY>0){
@@ -30,13 +30,15 @@ export default function Header({user}) {
                 <h1 className="text-lg  font-semibold cursor-pointer" onClick={()=>router.push('/')}>Medibase</h1>
             </div>
 
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center  rounded-full shadow-md focus:bg-white focus:text-gray-600 border active:bg-white border-gray-200 ">
                 {/* display search box to search for patient */}
-                <input placeholder="Search" type="text" className=" px-4 py-1 rounded-full bg-transparent border border-gray-200 outline-gray-400"/>
+                <input placeholder="Search" type="text" className=" px-4 py-1 bg-transparent outline-none  w-full"/>
+                <SearchIcon className="h-6 w-8"/>
             </div>
 
-            <div className="flex justify-end items-center space-x-4">
-                <p className="hidden md:inline cursor-pointer rounded-full px-4 py-1 hover:bg-gray-50 whitespace-nowrap">Register as Doctor</p>
+            <div className="flex justify-end items-center space-x-4 ">
+                <BellIcon className="h-6 w-8 cursor-pointer"/>
+                <p className="hidden md:inline cursor-pointer rounded-full px-4 py-1 hover:bg-gray-50 hover:text-gray-500 hover:shadow-md whitespace-nowrap">Refer to your friends</p>
                 <Dropdown user={user} />
             </div>
             

@@ -10,7 +10,7 @@ import {useRouter} from 'next/router'
 
 
 
-function login() {
+function login({user}) {
 
     const auth = getAuth(firebaseApp);
     const router = useRouter();
@@ -40,10 +40,10 @@ function login() {
                 <link rel="icon" href="/favicon.ico" />  
             </Head>
 
-            <Header/>
+            <Header user = {user} />
             <main className='flex flex-col justify-center items-center h-[100vh] '>
                 <div className='flex flex-col items-center rounded-lg bg-gradient-to-tr from-slate-700 to-slate-700 border-indigo-200 '>
-                    <div className='flex justify-center items-center w-full text-gray-200 p-2 text-lg font-semibold border-b-2  border-gray-400 shadow-md'>Login</div>
+                    <div className='flex justify-center items-center w-full text-gray-200 p-2 text-lg font-semibold border-b-2  border-gray-400 shadow-md'>Login / SignUp</div>
                     
                     <div className='flex flex-col justify-center items-center  p-4 space-y-4'>
                         <button className='border bg-white border-gray-100 text-gray-800 shadow-md rounded-lg px-2 py-1 cursor-pointer w-full hover:bg-gray-300 transition duration-200 active:scale-95 ' onClick={signInPopUpGoogle}><GoogleIcon className="text-red-800"/> Continue with Google</button>

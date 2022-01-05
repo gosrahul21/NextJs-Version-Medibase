@@ -25,9 +25,13 @@ function Dropdown({user}) {
 
     return (
         <div className="relative ">
-            <div className='flex bg-slate-500 items-center px-2 py-1 cursor-pointer text-base mx-2 border border-indigo-100 rounded-full p-1' onClick={(e)=>{e.stopPropagation(); setShow(!show)}}>
-                <MenuIcon className='text-indigo-100 h-4 w-4'/>
-                {user?.photoUrl?<Avatar src={user.photoUrl} sx={{ width: 25, height: 25 }} />:<UserIcon className='text-indigo-100  h-5 w-5'/>}
+            <div className='flex hover:bg-gray-50  bg-slate-500 items-center 
+                px-2 py-1 cursor-pointer text-base mx-2 border text-indigo-100 hover:text-gray-500
+                border-indigo-100 rounded-full p-1' 
+                onClick={(e)=>{e.stopPropagation(); setShow(!show)}}
+            >
+                <MenuIcon className=' h-4 w-4'/>
+                {user?.photoUrl?<Avatar src={user.photoUrl} sx={{ width: 25, height: 25 }} />:<UserIcon className='  h-5 w-5'/>}
             </div>
 
             {show&&<div className="absolute min-w-[150px] bg-white shadow-md rounded-md z-50 right-0 whitespace-nowrap">
