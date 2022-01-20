@@ -48,7 +48,7 @@ export default function LoginModal({show,setShow}) {
 
     return (
 
-  show?(<div className= 'fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-gray-400 bg-opacity-70  '>
+  show?(<div className= 'fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-gray-300 bg-opacity-80  '>
                   
             <div className='flex flex-col items-center rounded-lg bg-gradient-to-tr from-slate-700 to-slate-700 border-indigo-200 ' onClick={(e)=>e.stopPropagation()}>
                 <div className='flex justify-center items-center w-full text-gray-200 p-4 text-lg font-semibold border-b  border-gray-400 shadow-md'>Sign in  / Sign up</div>
@@ -65,7 +65,7 @@ export default function LoginModal({show,setShow}) {
     
                 <p className='text-gray-200 py-4 px-8 cursor-pointer' onClick={()=>null}>Don't have an account? Sign UP</p> */}
             </div>
-
+                
       </div>):(<div></div> )
     )
 }

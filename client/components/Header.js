@@ -4,7 +4,7 @@ import { MenuIcon,SearchIcon,SunIcon,BellIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import LoginModal from './LoginModal'
 export default function Header({user,bgshow}) {
-
+ 
     const router = useRouter();
     const [bgShow,setBgShow] = useState(bgshow);
     

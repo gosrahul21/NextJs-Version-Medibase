@@ -5,5 +5,13 @@ module.exports = {
       'images.unsplash.com',
        'pngimg.com'
     ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/:any*',
+        destination: '/',
+      },
+    ];
   }
 }

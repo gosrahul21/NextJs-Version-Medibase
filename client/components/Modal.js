@@ -23,7 +23,7 @@ export default function Modal({setShow,message}) {
     },[]);
 
     return (
-        <div className='fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-gray-700 bg-opacity-30 '>
+        <div className='fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-red-100  '>
             <div className='bg-white space-y-6 shadow-lg text-gray-600 rounded-lg  w-80  px-4 py-4 transition transform duration-500 ease-in-out' onClick = {(e)=>e.stopPropagation()}>
                 <p>{message}</p>
                 <div className='space-x-4'>
